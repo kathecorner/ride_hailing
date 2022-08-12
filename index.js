@@ -57,8 +57,11 @@ app.post("/api/sessions", async (req, res) => {
     const protocol = req.socket.encrypted? 'https' : 'http';
     // Ideally the data passed here should be computed based on business logic
     const response = await checkout.sessions({
-      amount: { currency: "EUR", value: 1000 }, // value is 10€ in minor units
-      countryCode: "NL",
+      amount: { currency: "USD", value: 1000 }, // value is 10€ in minor units
+      countryCode: "US",
+      shopperReference: "kenji03",
+      storePaymentMethod: "true",
+      shopperInteraction: "Ecommerce",
       merchantAccount: process.env.ADYEN_MERCHANT_ACCOUNT, // required
       reference: orderRef, // required: your Payment Reference
       returnUrl: `${protocol}://${localhost}/api/handleShopperRedirect?orderRef=${orderRef}` // set redirect URL required for some payment methods
