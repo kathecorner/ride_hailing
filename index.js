@@ -64,7 +64,10 @@ app.post("/api/sessions", async (req, res) => {
       shopperInteraction: "Ecommerce",
       merchantAccount: process.env.ADYEN_MERCHANT_ACCOUNT, // required
       reference: orderRef, // required: your Payment Reference
-      returnUrl: `${protocol}://${localhost}/api/handleShopperRedirect?orderRef=${orderRef}` // set redirect URL required for some payment methods
+      returnUrl: `${protocol}://${localhost}/api/handleShopperRedirect?orderRef=${orderRef}`, // set redirect URL required for some payment methods
+      "additionalData":{
+        "authorisationType":"PreAuth"
+      }  
     });
 
     res.json(response);
