@@ -7,6 +7,7 @@ const { uuid } = require("uuidv4");
 
 const { hmacValidator } = require('@adyen/api-library');
 const { Client, Config, CheckoutAPI } = require("@adyen/api-library");
+const { response } = require("express");
 
 // init app
 const app = express();
@@ -53,25 +54,43 @@ app.post("/api/sessions", async (req, res) => {
     const orderRef = uuid();
     // Allows for gitpod support
     const localhost = req.get('host');
+    
     // const isHttps = req.connection.encrypted;
     const protocol = req.socket.encrypted? 'https' : 'http';
+    
     // Ideally the data passed here should be computed based on business logic
     const response = await checkout.sessions({
-      amount: { currency: "USD", value: 1000 }, // value is 10€ in minor units
-      countryCode: "US",
-      shopperReference: "kenji03",
-      storePaymentMethod: "true",
-      shopperInteraction: "Ecommerce",
+      amount: { currency: "EUR", value: 9197 }, // value is 10€ in minor units
+      countryCode: "DE",
       merchantAccount: process.env.ADYEN_MERCHANT_ACCOUNT, // required
       reference: orderRef, // required: your Payment Reference
-      returnUrl: `${protocol}://${localhost}/api/handleShopperRedirect?orderRef=${orderRef}` // set redirect URL required for some payment methods
-    });
+      //"shopperEmail":"test@testsite.com",
+      returnUrl: `${protocol}://${localhost}/api/handleShopperRedirect?orderRef=${orderRef}`, // set redirect URL required for some payment methods
+      
+      "lineItems" : [
+        {
+           "id" : "001",
+           "quantity" : 1,
+           "description" : "Product",
+           "amountIncludingTax" : 9197,
+           "amountExcludingTax" : 9197,
+           "taxAmount" : 0,
+           "taxPercentage" : 0,
+           "taxCategory" : "Zero"
+        }
+     ]
+                                
+      }
+    );    
+    console.log(response);
+    //res.send(response);
 
     res.json(response);
   } catch (err) {
     console.error(`Error: ${err.message}, error code: ${err.errorCode}`);
     res.status(err.statusCode).json(err.message);
   }
+
 });
 
 
@@ -116,6 +135,8 @@ app.all("/api/handleShopperRedirect", async (req, res) => {
 /* ################# CLIENT SIDE ENDPOINTS ###################### */
 
 // Index (select a demo)
+console.log("thru here:");
+
 app.get("/", (req, res) => res.render("index"));
 
 // Cart (continue to checkout)
@@ -132,6 +153,8 @@ app.get("/checkout", (req, res) =>
     clientKey: process.env.ADYEN_CLIENT_KEY
   })
 );
+
+
 
 // Result page
 app.get("/result/:type", (req, res) =>
