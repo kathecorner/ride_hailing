@@ -7,16 +7,22 @@ const sessionId = urlParams.get('sessionId'); // Unique identifier for the payme
 const redirectResult = urlParams.get('redirectResult');
 
 
-async function startCheckout() {
+async function startCheckout(req, res) {
   try {
     // Init Sessions
     const checkoutSessionResponse = await callServer("/api/sessions?type=" + type);
-
+    console.log("after callServer");
+    console.log(checkoutSessionResponse);
+    
     // Create AdyenCheckout using Sessions response
     const checkout = await createAdyenCheckout(checkoutSessionResponse)
+    console.log("after createAdyenCheckout");
+    console.log(checkout);
 
   // Create an instance of Drop-in and mount it
     checkout.create(type).mount(document.getElementById(type));
+    
+    
 
   } catch (error) {
     console.error(error);
@@ -48,15 +54,15 @@ async function createAdyenCheckout(session) {
         session: session,
         paymentMethodsConfiguration: {
             ideal: {
-                showImage: true
+                //showImage: true
             },
             card: {
                 hasHolderName: true,
                 holderNameRequired: true,
                 name: "Credit or debit card",
                 amount: {
-                    value: 1000,
-                    currency: "USD"
+                    value: 10000,
+                    currency: "EUR"
                 }
             },
             paypal: {
@@ -65,7 +71,41 @@ async function createAdyenCheckout(session) {
                     value: 1000
                 },
                 environment: "test",
-                countryCode: "US"   // Only needed for test. This will be automatically retrieved when you are in production.
+                countryCode: "US"   // Only needed for test. This will be automatically retrieved when you are in production.                
+            },
+            gcash: {
+              amount: {
+                currency: "PHP",
+                value: 1000
+              }
+            },
+            klarna_paynow: {
+              amount: {
+                currency: "EUR",
+                value: 7000
+              },
+              "shopperLocale": "en_US",
+              "countryCode": "SE",
+              "telephoneNumber": "+46 840 839 298",
+              "shopperEmail": "youremail@email.com",
+              "shopperName": {
+              "firstName": "Testperson-se",
+              "gender": "UNKNOWN",
+              "lastName": "Approved"
+              },
+              "lineItems": [
+                {
+                  "quantity": "1",
+                  "taxPercentage": "2100",
+                  "description": "Shoes",
+                  "id": "Item #1",
+                  "amountIncludingTax": "400",
+                  "productUrl": "URL_TO_PURCHASED_ITEM",
+                  "imageUrl": "URL_TO_PICTURE_OF_PURCHASED_ITEM"
+                }],
+                "additionalData" : {
+                  "openinvoicedata.merchantData" : "eyJjdXN0b21lcl9hY ... "
+                }
             }
         },
         onPaymentCompleted: (result, component) => {
@@ -75,19 +115,26 @@ async function createAdyenCheckout(session) {
             console.error(error.name, error.message, error.stack, component);
         }
     };
-
+    console.log("Checkout configuration is*");
+    console.log(AdyenCheckout(configuration));
     return new AdyenCheckout(configuration);
+    
 }
 
 // Calls your server endpoints
 async function callServer(url, data) {
+
   const res = await fetch(url, {
     method: "POST",
-    body: data ? JSON.stringify(data) : "",
+    body: data ? JSON.stringify(data) : "",    
     headers: {
       "Content-Type": "application/json",
     },
+    
   });
+  console.log("at callServer:");
+  console.log(res);
+
 
   return await res.json();
 }
