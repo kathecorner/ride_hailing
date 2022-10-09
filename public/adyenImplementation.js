@@ -65,7 +65,7 @@ async function createAdyenCheckout(session) {
                     value: 1000
                 },
             applepay: {
-                {
+                
    "additionalData" : {
       "riskdata.basket.item1" : {
          "itemID" : "000010",
@@ -129,7 +129,7 @@ async function createAdyenCheckout(session) {
    "accountInfo" : {
       "accountCreationDate" : "2022-05-25T06:46:41Z"
    }
-}
+
                 },
                 environment: "test",
                 countryCode: "US"   // Only needed for test. This will be automatically retrieved when you are in production.
