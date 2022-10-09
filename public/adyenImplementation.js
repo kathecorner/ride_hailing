@@ -84,7 +84,7 @@ async function createAdyenCheckout(session) {
       "value" : 59900,
       "currency" : "SEK"
    },
-   "merchantAccount" : "Uniqlo_Qburst",
+   "merchantAccount" : "KenjiW",
    "shopperReference" : "96b37ed02477a791f28a2cf2893b198c",
    "reference" : "PMG0C1E9B2DI660ARW6ZRFOCEZNEQ71",
    "shopperName" : {
