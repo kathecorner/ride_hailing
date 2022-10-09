@@ -64,6 +64,73 @@ async function createAdyenCheckout(session) {
                     currency: "USD",
                     value: 1000
                 },
+            applepay: {
+                {
+   "additionalData" : {
+      "riskdata.basket.item1" : {
+         "itemID" : "000010",
+         "productTitle" : "COTTON MODAL open collar short SLEEVE SHIRT (TALL - 31.5\") - en",
+         "amountPerItem" : "499.0000",
+         "upc" : "0001*****0372",
+         "sku" : "00000191",
+         "brand" : "UQ",
+         "manufacturer" : "FAST_RETAILING",
+         "color" : "COL71",
+         "size" : "MSC025",
+         "quantity" : "1"
+      }
+   },
+   "amount" : {
+      "value" : 59900,
+      "currency" : "SEK"
+   },
+   "merchantAccount" : "Uniqlo_Qburst",
+   "shopperReference" : "96b37ed02477a791f28a2cf2893b198c",
+   "reference" : "PMG0C1E9B2DI660ARW6ZRFOCEZNEQ71",
+   "shopperName" : {
+      "firstName" : "Reshma",
+      "gender" : "UNKNOWN",
+      "lastName" : "Pillai"
+   },
+   "shopperEmail" : "seapplepay@gmail.com",
+   "shopperIP" : "111.93.116.30",
+   "deliveryAddress" : {
+      "city" : "Bodens kommun",
+      "country" : "SE",
+      "street" : "110 Ferne Spurs",
+      "houseNumberOrName" : "96146, Norrbotten County",
+      "postalCode" : "984 99",
+      "stateOrProvince" : "Stockholm"
+   },
+   "billingAddress" : {
+      "city" : "Bodens kommun",
+      "country" : "SE",
+      "street" : "110 Ferne Spurs",
+      "houseNumberOrName" : "96146, Norrbotten County",
+      "postalCode" : "984 99",
+      "stateOrProvince" : "Stockholm"
+   },
+   "deliveryDate" : "2022-05-29T12:30:02Z",
+   "storePaymentMethod" : false,
+   "browserInfo" : {
+      "userAgent" : "Mozilla\/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit\/605.1.15 (KHTML, like Gecko) Version\/14.1.1 Mobile\/15E148 Safari\/604.1",
+      "acceptHeader" : "application\/json",
+      "language" : "en-ca",
+      "colorDepth" : 32,
+      "screenHeight" : 896,
+      "screenWidth" : 414,
+      "timeZoneOffset" : -330,
+      "javaEnabled" : false
+   },
+   "paymentMethod" : {
+      "type" : "applepay",
+      "applePayToken" : "*****"
+   },
+   "accountInfo" : {
+      "accountCreationDate" : "2022-05-25T06:46:41Z"
+   }
+}
+                },
                 environment: "test",
                 countryCode: "US"   // Only needed for test. This will be automatically retrieved when you are in production.
             }
