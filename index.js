@@ -59,56 +59,19 @@ app.post("/api/sessions", async (req, res) => {
     const response = await checkout.sessions({
       amount: { currency: "SEK", value: 59900 }, // value is 10€ in minor units
       //for UQEU
-        "additionalData" : {
-      "riskdata.basket.item1" : {
-         "itemID" : "000010",
-         "productTitle" : "COTTON MODAL open collar short SLEEVE SHIRT (TALL - 31.5\") - en",
-         "amountPerItem" : "499.0000",
-         "upc" : "0001*****0372",
-         "sku" : "00000191",
-         "brand" : "UQ",
-         "manufacturer" : "FAST_RETAILING",
-         "color" : "COL71",
-         "size" : "MSC025",
-         "quantity" : "1"
+          additionalData : {
+      riskdata : {
+         itemID : "000010",
+         productTitle : "COTTON MODAL open collar short SLEEVE SHIRT (TALL - 31.5\) - en",
+         amountPerItem : "499.0000",
+         upc : "0001*****0372",
+         sku : "00000191",
+         brand : "UQ",
+         manufacturer : "FAST_RETAILING",
+         color : "COL71",
+         size : "MSC025",
+         quantity : "1"
       }
-   },
-   "shopperName" : {
-      "firstName" : "Reshma",
-      "gender" : "UNKNOWN",
-      "lastName" : "Pillai"
-   },
-   "shopperEmail" : "seapplepay@gmail.com",
-   "shopperIP" : "111.93.116.30",
-   "deliveryAddress" : {
-      "city" : "Bodens kommun",
-      "country" : "SE",
-      "street" : "110 Ferne Spurs",
-      "houseNumberOrName" : "96146, Norrbotten County",
-      "postalCode" : "984 99",
-      "stateOrProvince" : "Stockholm"
-   },
-   "billingAddress" : {
-      "city" : "Bodens kommun",
-      "country" : "SE",
-      "street" : "110 Ferne Spurs",
-      "houseNumberOrName" : "96146, Norrbotten County",
-      "postalCode" : "984 99",
-      "stateOrProvince" : "Stockholm"
-   },
-   "deliveryDate" : "2022-05-29T12:30:02Z",   
-   "browserInfo" : {
-      "userAgent" : "Mozilla\/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit\/605.1.15 (KHTML, like Gecko) Version\/14.1.1 Mobile\/15E148 Safari\/604.1",
-      "acceptHeader" : "application\/json",
-      "language" : "en-ca",
-      "colorDepth" : 32,
-      "screenHeight" : 896,
-      "screenWidth" : 414,
-      "timeZoneOffset" : -330,
-      "javaEnabled" : false
-   },   
-   "accountInfo" : {
-      "accountCreationDate" : "2022-05-25T06:46:41Z"
    },
       
       
