@@ -57,7 +57,7 @@ app.post("/api/sessions", async (req, res) => {
     const protocol = req.socket.encrypted? 'https' : 'http';
     // Ideally the data passed here should be computed based on business logic
     const response = await checkout.sessions({
-      amount: { currency: "SEK", value: 59900 }, // value is 10€ in minor units
+      amount: { currency: "JPY", value: 59900 }, // value is 10€ in minor units
       //for UQEU
           additionalData : {
       riskdata : {
@@ -71,8 +71,13 @@ app.post("/api/sessions", async (req, res) => {
          color : "COL71",
          size : "MSC025",
          quantity : "1"
-      }
-   },     
+                  }
+         },
+         shopperName : {
+      firstName : "Reshma",
+      gender : "UNKNOWN",
+      lastName : "Pillai"
+      },
       
       
       
