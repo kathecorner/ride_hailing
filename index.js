@@ -96,9 +96,6 @@ app.post("/api/sessions", async (req, res) => {
       postalCode : "984 99",
       stateOrProvince : "Stockholm"
    },
-      browserInfo : {
-      
-   },   
 
       
       //countryCode: "US",
