@@ -17,8 +17,7 @@ async function startCheckout() {
     // Create AdyenCheckout using Sessions response
     const checkout = await createAdyenCheckout(checkoutSessionResponse)
   
-    console.log(checkout);
-    //document.write(checkout);
+    console.dir(checkout);
     
   // Create an instance of Drop-in and mount it
     checkout.create(type).mount(document.getElementById(type));
