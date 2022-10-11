@@ -97,14 +97,7 @@ app.post("/api/sessions", async (req, res) => {
       stateOrProvince : "Stockholm"
    },
       browserInfo : {
-      userAgent : "Mozilla\/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit\/605.1.15 (KHTML, like Gecko) Version\/14.1.1 Mobile\/15E148 Safari\/604.1",
-      acceptHeader : "application\/json",
-      language : "en-ca",
-      colorDepth : 32,
-      screenHeight : 896,
-      screenWidth : 414,
-      timeZoneOffset : -330,
-      javaEnabled : false
+      
    },   
 
       
