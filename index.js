@@ -57,7 +57,7 @@ app.post("/api/sessions", async (req, res) => {
     const protocol = req.socket.encrypted? 'https' : 'http';
     // Ideally the data passed here should be computed based on business logic
     const response = await checkout.sessions({
-      amount: { currency: "JPY", value: 59900 }, // value is 10€ in minor units
+      amount: { currency: "USD", value: 59900 }, // value is 10€ in minor units
       //for UQEU
           additionalData : {
       riskdata : {
