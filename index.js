@@ -106,9 +106,6 @@ app.post("/api/sessions", async (req, res) => {
       timeZoneOffset : -330,
       javaEnabled : false
    },   
-   accountInfo : {
-      accountCreationDate : "2022-05-25T06:46:41Z"
-   },
 
       
       //countryCode: "US",
