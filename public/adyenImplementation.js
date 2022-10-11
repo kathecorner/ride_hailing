@@ -11,10 +11,15 @@ async function startCheckout() {
   try {
     // Init Sessions
     const checkoutSessionResponse = await callServer("/api/sessions?type=" + type);
+    
+    console.log(checkoutSessionResponse);
 
     // Create AdyenCheckout using Sessions response
     const checkout = await createAdyenCheckout(checkoutSessionResponse)
-
+  
+    console.log(checkout);
+    alert(checkout);
+    
   // Create an instance of Drop-in and mount it
     checkout.create(type).mount(document.getElementById(type));
 
