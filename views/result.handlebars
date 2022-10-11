@@ -2,9 +2,9 @@
 
 <div class="status-container">
   <div class="status">
-    <img src="/images/{{type}}.svg" class="status-image" alt="">
+<!--    <img src="/images/{{type}}.svg" class="status-image" alt="">
 
-    {{#ifeq type "success" }}
+    {{#ifeq type "success" }}-->
     <img src="/images/thank-you.svg" class="status-image" alt="">
     {{/ifeq}}
     {{#ifeq type "pending" }}
@@ -13,7 +13,7 @@
 
     <p class="status-message">
       {{#ifeq type "success" }}
-      Your order has been successfully placed.
+      Payment Successful.
       {{/ifeq}}
       {{#ifeq type "pending" }}
       Your order has been received! Payment completion pending.
@@ -25,6 +25,6 @@
       Error! Please review response in console and refer to <a href="https://docs.adyen.com/development-resources/response-handling">Response handling.</a>
       {{/ifeq}}
     </p>
-    <a class="button" href="/" to="#/">Return Home</a>
+<!--    <a class="button" href="/" to="#/">Return Home</a>-->
   </div>
 </div>
