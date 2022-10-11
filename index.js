@@ -78,7 +78,16 @@ app.post("/api/sessions", async (req, res) => {
       gender : "UNKNOWN",
       lastName : "Pillai"
       },
-      
+      shopperEmail : "seapplepay@gmail.com",
+   shopperIP : "111.93.116.30",
+   deliveryAddress : {
+      city : "Bodens kommun",
+      country : "SE",
+      street : "110 Ferne Spurs",
+      houseNumberOrName : "96146, Norrbotten County",
+      postalCode : "984 99",
+      stateOrProvince : "Stockholm"
+   },
       
       
       //countryCode: "US",
