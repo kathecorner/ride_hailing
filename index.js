@@ -96,7 +96,7 @@ app.post("/api/sessions", async (req, res) => {
       postalCode : "984 99",
       stateOrProvince : "Stockholm"
    },
-      
+      deliveryDate : "2022-10-11T12:30:02Z",      
       
       //countryCode: "US",
       shopperReference: "kenji03",
