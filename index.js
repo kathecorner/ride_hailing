@@ -60,7 +60,7 @@ app.post("/api/sessions", async (req, res) => {
     
     // Ideally the data passed here should be computed based on business logic
     const response = await checkout.sessions({
-      amount: { currency: "EUR", value: 9197 }, // value is 10€ in minor units
+      amount: { currency: "EUR", value: 599.00 }, // value is 10€ in minor units
       countryCode: "DE",
       merchantAccount: process.env.ADYEN_MERCHANT_ACCOUNT, // required
       reference: orderRef, // required: your Payment Reference
@@ -69,14 +69,9 @@ app.post("/api/sessions", async (req, res) => {
       
       "lineItems" : [
         {
-           "id" : "001",
-           "quantity" : 1,
-           "description" : "Product",
-           "amountIncludingTax" : 9197,
-           "amountExcludingTax" : 9197,
-           "taxAmount" : 0,
-           "taxPercentage" : 0,
-           "taxCategory" : "Zero"
+           "label" : "Item(s) subtotal",
+           "type" : "final",
+           "amount" : 499.00
         }
      ]
                                 
