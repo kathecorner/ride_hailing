@@ -71,7 +71,7 @@ app.post("/api/sessions", async (req, res) => {
         {
            "label" : "Item(s) subtotal",
            "type" : "final",
-           "amount" : 499.00
+           "amount" : "499.00"
         }
      ]
                                 
