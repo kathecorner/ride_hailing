@@ -67,13 +67,7 @@ app.post("/api/sessions", async (req, res) => {
       //"shopperEmail":"test@testsite.com",
       returnUrl: `${protocol}://${localhost}/api/handleShopperRedirect?orderRef=${orderRef}`, // set redirect URL required for some payment methods
       
-      "lineItems" : [
-        {
-           "label" : "Item(s) subtotal",
-           "type" : "final",
-           "amount" : "499.00"
-        }
-     ]
+     
                                 
       }
     );    
