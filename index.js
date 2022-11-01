@@ -59,7 +59,10 @@ app.post("/api/sessions", async (req, res) => {
     const response = await checkout.sessions({
       //amount: { currency: "CAD", value: 10000 }, // value is 10€ in minor units
       //Apple Pay component
-       "amount":{"value":1500,"currency":"EUR"},"billingAddress":{"city":"Acheson","country":"CA","houseNumberOrName":"test","postalCode":"11285","stateOrProvince":"AB","street":"274 St"},"countryCode":"CA","deliveryAddress":{"city":"Acheson","country":"CA","houseNumberOrName":"test","postalCode":"11285","stateOrProvince":"AB","street":"274 St"},"lineItems":[{"amountExcludingTax":null,"amountIncludingTax":1,"description":"Navy style moccasins_8G9MU7219615","id":"1395873","quantity":1,"taxAmount":null,"taxPercentage":0,"productUrl":null,"imageUrl":"https://www.dev.musinsa.com/app/goods/1395873"}],"merchantAccount":"MUSINSAECOM","reference":"LP3QdsJQr0wnxJA1bI4Tvm1X3cXLV8","returnUrl":"https://pay-gw.dev.musinsa.com/payment/v3/webhook/adyen","shopperEmail":"jenny.lee@musinsa.com","shopperName":{"infix":null,"gender":"UNKNOWN","lastName":"lee","firstName":"jenny"},"shopperReference":"LP3QdsJQr0wnxJA1bI4Tvm1X3cXLV8",
+       "amount":{"value":1500,"currency":"USD"},
+      /*
+      "billingAddress":
+      {"city":"Acheson","country":"CA","houseNumberOrName":"test","postalCode":"11285","stateOrProvince":"AB","street":"274 St"},"countryCode":"CA","deliveryAddress":{"city":"Acheson","country":"CA","houseNumberOrName":"test","postalCode":"11285","stateOrProvince":"AB","street":"274 St"},"lineItems":[{"amountExcludingTax":null,"amountIncludingTax":1,"description":"Navy style moccasins_8G9MU7219615","id":"1395873","quantity":1,"taxAmount":null,"taxPercentage":0,"productUrl":null,"imageUrl":"https://www.dev.musinsa.com/app/goods/1395873"}],"merchantAccount":"MUSINSAECOM","reference":"LP3QdsJQr0wnxJA1bI4Tvm1X3cXLV8","returnUrl":"https://pay-gw.dev.musinsa.com/payment/v3/webhook/adyen","shopperEmail":"jenny.lee@musinsa.com","shopperName":{"infix":null,"gender":"UNKNOWN","lastName":"lee","firstName":"jenny"},"shopperReference":"LP3QdsJQr0wnxJA1bI4Tvm1X3cXLV8",
       
       
       
@@ -68,7 +71,7 @@ app.post("/api/sessions", async (req, res) => {
       
       shopperReference: "kenji03",
       storePaymentMethod: "true",
-      shopperInteraction: "Ecommerce",
+      shopperInteraction: "Ecommerce",*/
       merchantAccount: process.env.ADYEN_MERCHANT_ACCOUNT, // required
       reference: orderRef, // required: your Payment Reference
       returnUrl: `${protocol}://${localhost}/api/handleShopperRedirect?orderRef=${orderRef}` // set redirect URL required for some payment methods
