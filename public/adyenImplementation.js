@@ -76,6 +76,7 @@ async function createAdyenCheckout(session) {
             handleServerResponse(result, component);
         },
         //from here 11022022
+        /*
         onValidateMerchant: (resolve, reject, validationURL) => {
         // Your server uses the validation URL to request a session from the Apple Pay server.
         // Call resolve(MERCHANTSESSION) or reject() to complete merchant validation.
@@ -89,7 +90,7 @@ async function createAdyenCheckout(session) {
             reject();
             });
         }
-      
+        */
       
         //until here
         onError: (error, component) => {
