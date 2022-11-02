@@ -126,7 +126,8 @@ app.all("/api/handleShopperRedirect", async (req, res) => {
 /* ################# CLIENT SIDE ENDPOINTS ###################### */
 
 // Index (select a demo)
-app.get("/", (req, res) => res.render("index"));
+//app.get("/", (req, res) => res.render("index"));
+app.get("/", (req, res) => res.render("test"));
 
 // Cart (continue to checkout)
 app.get("/preview", (req, res) =>
