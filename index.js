@@ -150,6 +150,9 @@ app.get("/result/:type", (req, res) =>
     type: req.params.type,
   })
 );
+//final auth confirmation page
+app.get("/final", (req, res) => res.render("final"));
+
 
 /* ################# end CLIENT SIDE ENDPOINTS ###################### */
 
