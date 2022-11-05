@@ -11,7 +11,7 @@ const pspRef = null;
 async function startCheckout() {
   try {
     // Init Sessions
-    const checkoutSessionResponse = await callServer("/api/sessions?type=" + type);
+    const checkoutSessionResponse = await callServer("/api/webhooks/notifications");
     
     console.log(checkoutSessionResponse);
 
@@ -118,7 +118,7 @@ async function callServer(url, data) {
 
 // Handles responses sent from your server to the client
 function handleServerResponse(res, component) {  
-  //alert(res.resultCode);
+  alert(res.resultCode);
   //alert(res.pspReference);
   if (res.action) {
     component.handleAction(res.action);
