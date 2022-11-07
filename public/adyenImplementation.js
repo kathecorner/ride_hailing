@@ -6,6 +6,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const sessionId = urlParams.get('sessionId'); // Unique identifier for the payment session
 const redirectResult = urlParams.get('redirectResult');
 
+const pspRef = null;
 
 async function startCheckout() {
   try {
@@ -72,8 +73,9 @@ async function createAdyenCheckout(session) {
                 countryCode: "US"   // Only needed for test. This will be automatically retrieved when you are in production.
             }
         },
-        onPaymentCompleted: (result, component) => {
-            handleServerResponse(result, component);
+        onPaymentCompleted: (result, component) => {    
+          console.log(result.json);      
+            handleServerResponse(result, component);          
         },
         //from here 11022022
         /*
@@ -115,11 +117,14 @@ async function callServer(url, data) {
 }
 
 // Handles responses sent from your server to the client
-function handleServerResponse(res, component) {
+function handleServerResponse(res, component) {  
+  //alert(res.resultCode);
+  //alert(res.pspReference);
+  alert(res.sessionData);
   if (res.action) {
     component.handleAction(res.action);
   } else {
-    switch (res.resultCode) {
+    switch (res.resultCode) {      
       case "Authorised":
         window.location.href = "/result/success";
         break;
@@ -136,6 +141,7 @@ function handleServerResponse(res, component) {
     }
   }
 }
+
 
 if (!sessionId) {
     startCheckout();
