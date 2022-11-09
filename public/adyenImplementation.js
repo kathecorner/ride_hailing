@@ -1,41 +1,39 @@
 const clientKey = document.getElementById("clientKey").innerHTML;
 const type = document.getElementById("type").innerHTML;
-
-// Used to finalize a checkout call in case of redirect
 const urlParams = new URLSearchParams(window.location.search);
-const sessionId = urlParams.get('sessionId'); // Unique identifier for the payment session
+const sessionId = urlParams.get('sessionId');
 const redirectResult = urlParams.get('redirectResult');
 
 const pspRef = null;
 
 async function startCheckout() {
   try {
-    // Init Sessions
+    // init
     const checkoutSessionResponse = await callServer("/api/sessions?type=" + type);
     
     console.log(checkoutSessionResponse);
 
-    // Create AdyenCheckout using Sessions response
+    // create AdyenCheckout
     const checkout = await createAdyenCheckout(checkoutSessionResponse)
   
     console.dir(checkout);
     
-  // Create an instance of Drop-in and mount it
+  // instance Drop-in and mount it
     checkout.create(type).mount(document.getElementById(type));
 
   } catch (error) {
     console.error(error);
-    alert("Error occurred. Look at console for details");
+    alert("error!");
   }
 }
 
-// Some payment methods use redirects. This is where we finalize the operation
+// LPM redirect
 async function finalizeCheckout() {
     try {
-        // Create AdyenCheckout re-using existing Session
+        // Create AdyenCheckout
         const checkout = await createAdyenCheckout({id: sessionId});
 
-        // Submit the extracted redirectResult (to trigger onPaymentCompleted() handler)
+        
         checkout.submitDetails({details: {redirectResult}});
     } catch (error) {
         console.error(error);
@@ -48,7 +46,7 @@ async function createAdyenCheckout(session) {
     const configuration = {
         clientKey,
         locale: "en_US",
-        environment: "test",  // change to live for production
+        environment: "test",
         showPayButton: true,
         session: session,
         paymentMethodsConfiguration: {
@@ -64,14 +62,6 @@ async function createAdyenCheckout(session) {
                     currency: "USD"
                 }
             },
-            paypal: {
-                amount: {
-                    currency: "USD",
-                    value: 1000
-                },
-                environment: "test",
-                countryCode: "US"   // Only needed for test. This will be automatically retrieved when you are in production.
-            }
         },
         onPaymentCompleted: (result, component) => {    
           console.log(result.json);      
@@ -103,7 +93,7 @@ async function createAdyenCheckout(session) {
     return new AdyenCheckout(configuration);
 }
 
-// Calls your server endpoints
+// Call server
 async function callServer(url, data) {
   const res = await fetch(url, {
     method: "POST",
@@ -116,7 +106,7 @@ async function callServer(url, data) {
   return await res.json();
 }
 
-// Handles responses sent from your server to the client
+// handling response
 function handleServerResponse(res, component) {  
   //alert(res.resultCode);
   //alert(res.pspReference);
